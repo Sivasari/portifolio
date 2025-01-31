@@ -1,8 +1,153 @@
-{% extends 'main/base.html' %}
-{% block content %}
-    <h1>My Projects</h1>
-    <ul>
-        <li><a href="#">TweetHub - A Twitter Clone using Django</a></li>
-        <li><a href="#">E-commerce Site (Django & SQL)</a></li>
-    </ul>
-{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .projects-section {
+            text-align: center;
+            padding: 100px 50px;
+        }
+
+        .projects-section h2 {
+            font-size: 3em;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .projects-section h2 span {
+            color: cyan;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #111;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 20px cyan;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px cyan;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            color: cyan;
+            margin: 15px 0;
+        }
+
+        .project-card p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: cyan;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        /* Scroll Animation */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<section class="projects-section">
+    <h2>My <span>Projects</span></h2>
+    <div class="projects-container">
+        <div class="project-card hidden">
+            
+            <h3>Project One</h3>
+            <p>A brief description of the first project. It showcases unique features and functionalities.</p>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        
+        <div class="project-card hidden">
+            
+            <h3>Project Two</h3>
+            <p>A brief description of the second project. It focuses on innovation and user experience.</p>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        
+        <div class="project-card hidden">
+            
+            <h3>Project Three</h3>
+            <p>A brief description of the third project. It highlights modern web development techniques.</p>
+            <a href="#" class="btn">View Details</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Scroll Animation
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".hidden");
+
+        function scrollHandler() {
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    el.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", scrollHandler);
+        scrollHandler();
+    });
+</script>
+
+</body>
+</html>
+

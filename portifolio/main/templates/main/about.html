@@ -1,7 +1,180 @@
-{% extends 'main/base.html' %}
-{% block content %}
-    <h1>About Me</h1>
-    <p>Education: MCA at Aditya Engineering College</p>
-    <p>Skills: Python, Django, SQL, Java, C++</p>
-    <p>Certifications: PCAP Python, Infosys AI, Pearson Level 10</p>
-{% endblock %}
+<html>
+    <head>
+
+<style>
+    /* General Styling */
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    /* Navbar */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: black;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 1.8em;
+        color: cyan;
+    }
+
+    nav a {
+        color: cyan;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.2em;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    /* About Section */
+    .about-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        padding: 150px 50px;
+        text-align: left;
+    }
+
+    /* Profile Image */
+    .about-section .image img {
+        width: 280px;
+        border-radius: 50%;
+        border: 5px solid cyan;
+        box-shadow: 0 0 30px cyan;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        animation: glowEffect 2s infinite alternate;
+    }
+
+    .about-section .image img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 50px cyan;
+    }
+
+    /* Glow Animation */
+    @keyframes glowEffect {
+        0% {
+            box-shadow: 0 0 30px cyan;
+        }
+        100% {
+            box-shadow: 0 0 50px cyan;
+        }
+    }
+
+    /* About Text */
+    .about-text h2 {
+        font-size: 3em;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .about-text h2 span {
+        color: cyan;
+    }
+
+    .about-text h3 {
+        font-size: 1.8em;
+        color: cyan;
+    }
+
+    .about-text p {
+        font-size: 1.2em;
+        max-width: 600px;
+        line-height: 1.6;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: cyan;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+        background: white;
+        transform: scale(1.1);
+    }
+
+    /* Scroll Animation */
+    .hidden {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s, transform 0.8s;
+    }
+
+    .visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+
+<header>
+    <h2 class="logo">Portfolio</h2>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="#">Services</a>
+        <a href="#">Skills</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="about-section">
+    <div class="image hidden">
+        
+    </div>
+    <div class="about-text hidden">
+        <h2>About <span>Me</span></h2>
+        <h3>Full Stack Developer</h3>
+        <p>
+            I am a passionate Full Stack Developer with expertise in Django, JavaScript, and modern web technologies.
+            I love creating interactive and dynamic web experiences. With over 3 years of experience, I have worked on 
+            numerous projects that involve frontend and backend development.
+        </p>
+        <a href="#" class="btn">More About Me</a>
+    </div>
+</section>
+
+<script>
+    // Scroll Animation
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".hidden");
+
+        function scrollHandler() {
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    el.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", scrollHandler);
+        scrollHandler();
+    });
+</script>
+</html>
