@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,52 +101,43 @@
 </head>
 <body>
 
-<section class="projects-section">
-    <h2>My <span>Projects</span></h2>
-    <div class="projects-container">
-        <div class="project-card hidden">
-            
-            <h3>Project One</h3>
-            <p>A brief description of the first project. It showcases unique features and functionalities.</p>
-            <a href="#" class="btn">View Details</a>
+    <section class="projects-section">
+        <h2>My <span>Projects</span></h2>
+        <div class="projects-container">
+            {% for project in projects %}
+            <div class="project-card hidden">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                {% if project.link %}
+                <a href="{{ project.link }}" class="btn" target="_blank">View Details</a>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
-        
-        <div class="project-card hidden">
-            
-            <h3>Project Two</h3>
-            <p>A brief description of the second project. It focuses on innovation and user experience.</p>
-            <a href="#" class="btn">View Details</a>
-        </div>
-        
-        <div class="project-card hidden">
-            
-            <h3>Project Three</h3>
-            <p>A brief description of the third project. It highlights modern web development techniques.</p>
-            <a href="#" class="btn">View Details</a>
-        </div>
-    </div>
-</section>
-
-<script>
-    // Scroll Animation
-    document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".hidden");
-
-        function scrollHandler() {
-            elements.forEach(el => {
-                const position = el.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (position < windowHeight - 100) {
-                    el.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", scrollHandler);
-        scrollHandler();
-    });
-</script>
-
+    </section>
+    
+    <script>
+        // Scroll Animation
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(".hidden");
+    
+            function scrollHandler() {
+                elements.forEach(el => {
+                    const position = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (position < windowHeight - 100) {
+                        el.classList.add("visible");
+                    }
+                });
+            }
+    
+            window.addEventListener("scroll", scrollHandler);
+            scrollHandler();
+        });
+    </script>
+    
 </body>
 </html>
-
